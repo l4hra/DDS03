@@ -1,0 +1,120 @@
+*{
+ padding: 0;
+ margin: 0;
+ outline: 0;
+
+}
+
+body{
+ background-color: #f3f3f3;
+ font-size: 16px;
+}
+
+#navegacao{
+    background-color: #ffff;
+    border-bottom: 3px solid #d8d8d8;
+    height: 45px;
+}
+
+#area_menu{
+    width: 720px;
+    margin: 0 auto;
+}
+
+#logo{
+    float: left;
+}
+
+.azul{
+    color: rgb(22, 123, 148);
+}
+
+#menu{
+    float: right;
+    padding: 10px 0;
+
+}
+
+#menu a{
+    text-decoration: none;
+    padding: 15px;
+}
+
+#menu a:link, #menu a:visited{
+    color:  black;
+}
+
+#menu a:hover{
+    color:  rgb(22, 123, 148);
+    
+}
+
+#area_principal{
+    width: 720px;
+    margin: 50px auto 20px auto;
+}
+
+.postagem{
+    background-color: #ffff;
+    padding: 10px;
+    margin-bottom: 25px;
+}
+
+h2{
+    color: #87cefa;
+}
+
+.data_postagem{
+    font-size: 13px;
+    border-bottom: 1px solid #4682b4;
+    margin-bottom: 15px;
+    padding-bottom: 12px;
+    display: block;
+}
+
+.img_postagem{
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.autor{
+    border-top:3px solid #483d88;
+    padding-left: 10px;
+    margin-top:15px;
+    display: block;
+}
+
+.titulo_antivirus{
+    color: #6c966c;
+    text-align: center;
+}
+
+.img_antivirus{
+     height: 150px;
+     border-radius: 10px;
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.antivirus{
+    width: 30%;
+    height: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#avast{
+    background-image: url(assets/avast.png);
+
+}
+
+#avg{
+    background-image: url(assets/avg.jpg);
+}
+
+#nortom{
+   background-image: url(assets/norton.png);
+}
