@@ -1,22 +1,65 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Painel de aulas</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
     <div class="maior">
-        <div id="cabecalho" style="background-color: #7dd3fc; padding: 2em; font-family: Arial, Helvetica, sans-serif; font-weight: 700; color: #fff;">
-            <span id="cumprimento" style="font-size: 1.8em;"></span>
-            <span id="saudacao" style="font-size: 1.8em;"></span>
+      <div
+        id="cabecalho"
+        style="
+          background-color: #7dd3fc;
+          padding: 2em;
+          font-family: Arial, Helvetica, sans-serif;
+          font-weight: 700;
+          color: #fff;
+        "
+      >
+        <div
+          class="menor"
+          style="display: flex; justify-content: space-between"
+        >
+          <span id="cumprimento" style="font-size: 1.8em"></span>
+          <span id="saudacao" style="font-size: 1.8em"></span>
         </div>
+      </div>
 
-        <div id="anuncios"></div>
+   <div style=" display: flex; margin-top: 6px;">
+    <table
+      id="tabela"
+      style="
+        margin-right: 6px;
+        font-family: Arial, Helvetica, sans-serif;
+        width: 100%;
+      "
+    >
+      <tr style="background-color: rgb(56, 75, 184); color: #fff">
+        <th>Inicio</th>
+        <th>Fim</th>
+        <th>Turma</th>
+        <th>Instrutor</th>
+        <th>Unidade curricular</th>
+        <th>Ambiente</th>
+      </tr>
+    </table>
+    
+    <div class="imagens">
+        <img
+          src="https://findes.com.br/wp-content/uploads/2023/10/IMG_4015-1-3-1024x683.png"
+        />
+        <img
+        src="https://www.senaiac.org.br/images/2019/12/16/senai1--web.jpg"
+      />
+    </div>
+      <!-- <div id="anuncios"></div> -->
+    </div>
+</div>
     </div>
     <script src="saudacao.js"></script>
-    <script src="imagens.js"></script>
-
-</body>
+    <script src="table.js"></script>
+    <!-- <script src="imagens.js"></script> -->
+  </body>
 </html>

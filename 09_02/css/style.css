@@ -1,7 +1,35 @@
-#anuncios{
-    width: 20%;
+/* #anuncios {
+  width: 20%;
 }
 
-#anuncios img{
-    max-width: 100%;
+#anuncios img {
+  max-width: 100%;
+} */
+
+.azul-claro {
+  background-color: #67e8f9;
+}
+
+.azul-escuro {
+  background-color: #0ea5e9;
+  color: #fff;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td,
+th {
+  border: none;
+  text-align: center;
+  padding: 5px;
+}
+
+.imagens {
+  width: 20%;
+}
+
+.imagens img {
+  max-width: 100%;
 }
