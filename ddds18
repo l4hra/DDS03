@@ -1,0 +1,93 @@
+const Task = ({ task, users, onStatusChange }) => {
+  return (
+    <div className="task">
+      <h3>{task.title}</h3>
+      <p>{task.description}</p>
+      <p>Assigned to: {task.assignedTo}</p>
+      <p>Created on: {new Date(task.creationDate).toLocaleDateString()}</p>
+      <select value={task.status} onChange={(e) => onStatusChange(task.id, e.target.value)}>
+        <option value="todo">A Fazer</option>
+        <option value="doing">Fazendo</option>
+        <option value="done">Finalizado</option>
+      </select>
+    </div>
+  );
+};
+
+export default Task;
+
+
+
+const Column = ({ title, tasks, users, onStatusChange }) => {
+  return (
+    <div className="column">
+      <h2>{title}</h2>
+      {tasks.map(task => (
+        <Task key={task.id} task={task} users={users} onStatusChange={onStatusChange} />
+      ))}
+    </div>
+  );
+};
+
+export default Column;
+
+
+
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Column from './Column';
+
+const Board = () => {
+  const [tasks, setTasks] = useState([]);
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    axios.get('/api/tasks').then(response => setTasks(response.data));
+    axios.get('/api/users').then(response => setUsers(response.data));
+  }, []);
+
+  const handleStatusChange = (taskId, newStatus) => {
+    const updatedTasks = tasks.map(task =>
+      task.id === taskId ? { ...task, status: newStatus } : task
+    );
+    setTasks(updatedTasks);
+    axios.put(`/api/tasks/${taskId}`, { status: newStatus });
+  };
+
+  return (
+    <div className="board">
+      <Column title="A Fazer" tasks={tasks.filter(task => task.status === 'todo')} users={users} onStatusChange={handleStatusChange} />
+      <Column title="Fazendo" tasks={tasks.filter(task => task.status === 'doing')} users={users} onStatusChange={handleStatusChange} />
+      <Column title="Finalizado" tasks={tasks.filter(task => task.status === 'done')} users={users} onStatusChange={handleStatusChange} />
+    </div>
+  );
+};
+
+export default Board;
+
+
+const express = require('express');
+const router = express.Router();
+const tasks = require('../models/task');
+
+router.get('/', (req, res) => {
+  res.json(tasks);
+});
+
+router.post('/', (req, res) => {
+  const newTask = { ...req.body, id: tasks.length + 1, creationDate: new Date() };
+  tasks.push(newTask);
+  res.json(newTask);
+});
+
+router.put('/:id', (req, res) => {
+  const taskIndex = tasks.findIndex(task => task.id == req.params.id);
+  if (taskIndex !== -1) {
+    tasks[taskIndex] = { ...tasks[taskIndex], ...req.body };
+    res.json(tasks[taskIndex]);
+  } else {
+    res.status(404).send('Task not found');
+  }
+});
+
+module.exports = router;
